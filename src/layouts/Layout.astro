@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+---
+
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Infiltrométrie Lyon & RE2020 : ACCTHERM Expert Étanchéité Air</title>
+    <meta name="description" content="ACCTHERM, expert Qualibat depuis 20 ans. Test d'infiltrométrie, contrôle VMC et DPE à Lyon et en Rhône-Alpes. Devis gratuit pour particuliers et pros." />
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json" is:inline>
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://acctherm.fr/#localbusiness",
+          "name": "ACCTHERM",
+          "description": "Expert en infiltrométrie, contrôle VMC et RE2020 à Lyon et en Rhône-Alpes.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lyon",
+            "addressRegion": "Auvergne-Rhône-Alpes",
+            "addressCountry": "FR"
+          },
+          "founder": {
+            "@type": "Person",
+            "name": "Pascal Poulanges"
+          },
+          "areaServed": ["Lyon", "Villeurbanne", "Rhône", "Isère", "Ain"]
+        }
+      ]
+    }
+    </script>
+  </head>
+  <body class="bg-[#f8fafc] text-slate-700 font-inter antialiased">
+    <div class="min-h-screen flex flex-col selection:bg-primary-orange/30">
+      <slot />
+    </div>
+  </body>
+</html>
