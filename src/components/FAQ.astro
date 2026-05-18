@@ -1,0 +1,28 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const faqs = [
+  { question: "Quand faut-il réaliser le test d'infiltrométrie ?", answer: "Pour une efficacité maximale..." },
+  { question: "Le test d'étanchéité à l'air est-il obligatoire pour une rénovation ?", answer: "Bien que non systématiquement obligatoire..." },
+  { question: "Quel est le prix d'un test d'infiltrométrie à Lyon ?", answer: "Le tarif dépend de la surface du bâtiment..." },
+];
+---
+
+<div class="flex flex-col h-full">
+  <h2 class="text-lg md:text-xl font-bold font-display text-primary-navy mb-6">
+    Questions Fréquentes
+  </h2>
+  <div class="space-y-3 overflow-y-auto pr-2 grow custom-scrollbar">
+    {faqs.map((faq, index) => (
+      <details id={`faq-item-${index}`} class="group border border-slate-100 rounded-lg open:bg-slate-50 transition-colors">
+        <summary class="list-none p-4 text-[11px] md:text-xs font-bold text-slate-700 cursor-pointer flex justify-between items-center transition-colors">
+          <span class="flex-1 pr-4">{faq.question}</span>
+          <Icon name="lucide:chevron-down" class="w-4 h-4 group-open:rotate-180 transition-transform" />
+        </summary>
+        <p class="px-4 pb-4 text-[10px] md:text-[11px] leading-relaxed text-slate-500 font-medium whitespace-pre-wrap">
+          {faq.answer}
+        </p>
+      </details>
+    ))}
+  </div>
+</div>
