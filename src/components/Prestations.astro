@@ -1,0 +1,27 @@
+---
+import PrestationCards from './PrestationCards.astro';
+import FAQ from './FAQ.astro';
+---
+
+<section id="prestations" class="px-4 sm:px-6 lg:px-8 pb-8">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
+    <div class="flex flex-col gap-6">
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 flex flex-col">
+        <h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy mb-4 border-l-4 border-primary-orange pl-4 leading-tight">
+          Nos Expertise Techniques
+        </h2>
+        <p class="text-sm md:text-base leading-relaxed text-slate-600 mb-6 font-medium">
+          Chez ACCTHERM, nous utilisons des technologies de pointe...
+        </p>
+        <PrestationCards />
+        <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest text-center italic">
+          Cliquez sur une prestation pour obtenir un devis personnalisé
+        </p>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-2xl border border-slate-200 p-6 md:p-8 flex flex-col h-full min-h-[400px]">
+      <FAQ />
+    </div>
+  </div>
+</section>
