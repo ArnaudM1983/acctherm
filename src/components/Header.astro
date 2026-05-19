@@ -15,7 +15,7 @@ import logoCompany from '../assets/acctherm-logo.webp';
       />
     </a>
     
-    {/* Navigation Desktop (Cachée sur mobile) */}
+    {/* Navigation Desktop */}
     <nav class="hidden lg:flex items-center gap-8">
       <a href="#" class="text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors">Accueil</a>
       
@@ -53,9 +53,9 @@ import logoCompany from '../assets/acctherm-logo.webp';
       <span class="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Qualibat 8711</span>
     </div>
 
-    {/* Menu Équipe (Visible sur desktop et mobile si l'espace le permet) */}
-    <div class="relative group text-right mr-4 lg:mr-0">
-      <button class="flex items-center gap-1.5 text-right cursor-pointer focus:outline-none py-1 group">
+    {/* Menu Équipe (Modifié : ID ajouté pour le JS et classes adaptées pour le clic mobile) */}
+    <div id="team-menu-container" class="relative group text-right mr-4 lg:mr-0">
+      <button id="team-menu-btn" class="flex items-center gap-1.5 text-right cursor-pointer focus:outline-none py-1 group">
         <div class="hidden xs:block">
           <p class="text-xs font-bold text-primary-navy group-hover:text-primary-orange transition-colors whitespace-nowrap">L'Équipe ACCTHERM</p>
           <p class="text-[10px] text-slate-500 font-medium">Experts Rhône-Alpes</p>
@@ -64,7 +64,8 @@ import logoCompany from '../assets/acctherm-logo.webp';
         <Icon name="lucide:chevron-down" class="hidden xs:block w-3.5 h-3.5 text-slate-400 group-hover:text-primary-orange transition-colors" />
       </button>
 
-      <div class="absolute top-full right-0 w-56 bg-white border border-slate-200 shadow-xl rounded-xl p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50 text-left">
+      {/* Le sous-menu utilise des états "active" injectés par JS en plus du survol CSS classique */}
+      <div id="team-dropdown" class="absolute top-full right-0 w-56 bg-white border border-slate-200 shadow-xl rounded-xl p-3 opacity-0 invisible group-hover:lg:opacity-100 group-hover:lg:visible data-[open=true]:opacity-100 data-[open=true]:visible data-[open=true]:translate-y-0 transition-all duration-200 translate-y-2 z-50 text-left">
         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-2">Lignes directes</p>
         
         <div class="flex flex-col gap-1">
@@ -105,12 +106,10 @@ import logoCompany from '../assets/acctherm-logo.webp';
   id="mobile-menu"
   class="lg:hidden fixed top-0 left-0 w-full h-[100dvh] z-40 bg-white flex flex-col pt-24 px-6 pb-8 gap-2 overflow-y-auto transition-all duration-500 ease-out -translate-y-full opacity-0 invisible pointer-events-none"
 >
-  <!-- Lien Simple -->
   <a href="#" class="mobile-link w-full text-left text-xl font-bold uppercase text-primary-navy py-3 border-b border-slate-100">
     Accueil
   </a>
 
-  <!-- Dropdown: Prestations -->
   <div class="mobile-accordion w-full border-b border-slate-100">
     <button class="accordion-btn w-full text-left text-xl uppercase font-bold text-primary-navy flex justify-between items-center py-4">
       Prestations
@@ -124,7 +123,6 @@ import logoCompany from '../assets/acctherm-logo.webp';
     </div>
   </div>
 
-  <!-- Dropdown: Expertise -->
   <div class="mobile-accordion w-full border-b border-slate-100">
     <button class="accordion-btn w-full text-left text-xl uppercase font-bold text-primary-navy flex justify-between items-center py-4">
       Expertise
@@ -137,7 +135,6 @@ import logoCompany from '../assets/acctherm-logo.webp';
     </div>
   </div>
 
-  <!-- Lien Simple -->
   <a href="#contact" class="mobile-link w-full text-left text-xl font-bold uppercase text-primary-navy py-3 mt-2">
     Contact
   </a>
@@ -145,6 +142,7 @@ import logoCompany from '../assets/acctherm-logo.webp';
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // --- GESTION DU MENU MOBILE (HAMBURGER) ---
     const btn = document.getElementById('mobile-menu-btn');
     const menu = document.getElementById('mobile-menu');
     
@@ -195,6 +193,27 @@ import logoCompany from '../assets/acctherm-logo.webp';
       });
     });
 
+    // --- GESTION DU CLIC SUR LE BOUTON TELEPHONE / ÉQUIPE ---
+    const teamBtn = document.getElementById('team-menu-btn');
+    const teamDropdown = document.getElementById('team-dropdown');
+    const teamContainer = document.getElementById('team-menu-container');
+
+    if (teamBtn && teamDropdown && teamContainer) {
+      teamBtn.addEventListener('click', (e) => {
+        e.stopPropagation(); // Évite la fermeture immédiate sur le document
+        const isOpen = teamDropdown.getAttribute('data-open') === 'true';
+        teamDropdown.setAttribute('data-open', isOpen ? 'false' : 'true');
+      });
+
+      // Ferme la fenêtre si on clique n'importe où ailleurs sur la page
+      document.addEventListener('click', (e) => {
+        if (!teamContainer.contains(e.target as Node)) {
+          teamDropdown.setAttribute('data-open', 'false');
+        }
+      });
+    }
+
+    // --- ACCORDEONS DU MENU MOBILE ---
     const accordions = document.querySelectorAll('.mobile-accordion');
     accordions.forEach(acc => {
       const accBtn = acc.querySelector('.accordion-btn');
