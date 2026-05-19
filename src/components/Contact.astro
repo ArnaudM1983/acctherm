@@ -1,0 +1,111 @@
+---
+import { Icon } from 'astro-icon/components';
+---
+
+<section id="contact" class="px-4 sm:px-6 lg:px-8 pb-12 max-w-7xl mx-auto w-full">
+  <div class="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden grid grid-cols-1 lg:grid-cols-2">
+    
+    {/* Colonne de Gauche : Texte et Réassurance */}
+    <div class="bg-slate-50 p-8 md:p-12 border-b lg:border-b-0 lg:border-r border-slate-200 flex flex-col justify-between">
+      <div>
+        <div class="inline-flex items-center gap-2 bg-orange-100 text-primary-orange text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-6">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary-orange opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-primary-orange"></span>
+          </span>
+          Réponse sous 24h maximum
+        </div>
+        
+        <h2 class="text-2xl md:text-4xl font-extrabold font-display text-primary-navy mb-6 leading-tight">
+          Prêt à valider votre <span class="text-primary-orange">conformité ?</span>
+        </h2>
+        
+        <p class="text-base text-slate-600 mb-10 leading-relaxed font-medium">
+          Besoin d'un test d'infiltrométrie, d'un contrôle VMC ou d'un conseil sur la RE2020 ? Remplissez ce formulaire et nos experts Tom ou Pierre vous rappelleront pour une étude personnalisée de votre projet.
+        </p>
+      </div>
+
+      <div class="space-y-6">
+        <div class="flex items-start gap-4">
+          <div class="bg-white p-3 rounded-xl border border-slate-200 text-primary-orange shadow-sm shrink-0">
+            <Icon name="lucide:phone-call" class="w-5 h-5" />
+          </div>
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Lignes directes experts</p>
+            <div class="space-y-0.5">
+              <p class="text-base font-bold text-primary-navy flex items-center gap-2">
+                <span class="text-xs font-medium text-slate-500 w-12">Tom :</span> 06.95.31.17.58
+              </p>
+              <p class="text-base font-bold text-primary-navy flex items-center gap-2">
+                <span class="text-xs font-medium text-slate-500 w-12">Pierre :</span> 06.34.58.33.03
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="flex items-start gap-4">
+          <div class="bg-white p-3 rounded-xl border border-slate-200 text-primary-orange shadow-sm shrink-0">
+            <Icon name="lucide:mail" class="w-5 h-5" />
+          </div>
+          <div>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-1">Email professionnel</p>
+            <a href="mailto:contact@acctherm.fr" class="text-base font-bold text-primary-navy hover:text-primary-orange transition-colors">
+              contact@acctherm.fr
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {/* Colonne de Droite : Le Formulaire */}
+    <div class="p-8 md:p-12">
+      <form action="#" method="POST" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="flex flex-col gap-1.5">
+          <label for="name" class="text-xs font-bold text-slate-500 uppercase ml-1">Nom ou Entreprise</label>
+          <input type="text" id="name" name="name" required placeholder="Ex: Jean Dupont" 
+            class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all" />
+        </div>
+        
+        <div class="flex flex-col gap-1.5">
+          <label for="phone" class="text-xs font-bold text-slate-500 uppercase ml-1">Téléphone</label>
+          <input type="tel" id="phone" name="phone" required placeholder="06 .. .. .. .." 
+            class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all" />
+        </div>
+
+        <div class="flex flex-col gap-1.5 sm:col-span-2">
+          <label for="email" class="text-xs font-bold text-slate-500 uppercase ml-1">Adresse Email</label>
+          <input type="email" id="email" name="email" required placeholder="votre@email.fr" 
+            class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all" />
+        </div>
+
+        <div class="flex flex-col gap-1.5 sm:col-span-2">
+          <label for="service" class="text-xs font-bold text-slate-500 uppercase ml-1">Type de projet</label>
+          <div class="relative flex items-center">
+            <select id="service" name="service" required 
+              class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all appearance-none cursor-pointer pr-10">
+              <option value="">Sélectionnez un service</option>
+              <option value="intermediaire">Mesure Intermédiaire (Chantier)</option>
+              <option value="final">Mesure Finale & Attestation RE2020</option>
+              <option value="vmc">Vérification Système VMC</option>
+              <option value="dpe">Diagnostic de Performance Énergétique (DPE)</option>
+              <option value="conseil-formation">Conseils ou Formations</option>
+            </select>
+            <Icon name="lucide:chevron-down" class="w-4 h-4 text-slate-400 absolute right-4 pointer-events-none" />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1.5 sm:col-span-2">
+          <label for="message" class="text-xs font-bold text-slate-500 uppercase ml-1">Détails du projet</label>
+          <textarea id="message" name="message" rows="4" placeholder="Adresse du chantier, surface, urgence..." 
+            class="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary-orange/20 focus:border-primary-orange transition-all resize-none"></textarea>
+        </div>
+
+        <button type="submit" 
+          class="sm:col-span-2 bg-primary-orange hover:bg-primary-orange-hover text-white font-bold py-4 px-8 rounded-xl text-sm transition-all shadow-lg shadow-orange-200/50 mt-2 flex items-center justify-center gap-2 group cursor-pointer">
+          Envoyer ma demande de devis
+          <Icon name="lucide:send" class="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+        </button>
+      </form>
+    </div>
+  </div>
+</section>

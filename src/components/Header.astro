@@ -1,16 +1,25 @@
 ---
 import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
+import logoCompany from '../assets/acctherm-logo.webp';
 ---
 
 <header id="header" class="sticky top-0 z-50 w-full bg-white border-b border-slate-200 px-4 sm:px-8 py-4 flex justify-between items-center shrink-0">
   <div class="flex items-center gap-4 md:gap-12">
-    <h2 class="text-xl md:text-2xl font-bold font-display text-primary-navy tracking-tight">ACCTHERM</h2>
+    <a href="#" class="flex items-center focus:outline-none shrink-0">
+      <Image 
+        src={logoCompany} 
+        alt="ACCTHERM Logo" 
+        class="h-8 md:h-12 w-auto object-contain" 
+        loading="eager"
+      />
+    </a>
     
     <nav class="hidden lg:flex items-center gap-8">
       <a href="#" class="text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors">Accueil</a>
       
       <div class="relative group">
-        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2">
+        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer">
           Prestations <Icon name="lucide:chevron-down" class="w-4 h-4" />
         </button>
         <div class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
@@ -22,7 +31,7 @@ import { Icon } from 'astro-icon/components';
       </div>
 
       <div class="relative group">
-        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2">
+        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer">
           Expertise <Icon name="lucide:chevron-down" class="w-4 h-4" />
         </button>
         <div class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
@@ -36,14 +45,42 @@ import { Icon } from 'astro-icon/components';
     </nav>
   </div>
 
-  <div class="flex items-center gap-4">
-    <div class="hidden xl:flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-100">
+  <div class="flex items-center gap-4 md:gap-6">
+    <div class="hidden sm:flex items-center gap-1.5 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100">
       <Icon name="lucide:shield-check" class="w-4 h-4 text-green-600" />
       <span class="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Qualibat 8711</span>
     </div>
-    <div class="text-right">
-      <p class="text-xs font-bold text-primary-navy lg:whitespace-nowrap">Pascal Poulanges</p>
-      <p class="text-[10px] text-slate-500 font-medium">Expert Rhône-Alpes</p>
+
+    <div class="relative group text-right">
+      <button class="flex items-center gap-1.5 text-right cursor-pointer focus:outline-none py-1 group">
+        <div>
+          <p class="text-xs font-bold text-primary-navy group-hover:text-primary-orange transition-colors whitespace-nowrap">L'Équipe ACCTHERM</p>
+          <p class="text-[10px] text-slate-500 font-medium">Experts Rhône-Alpes</p>
+        </div>
+        <Icon name="lucide:chevron-down" class="w-3.5 h-3.5 text-slate-400 group-hover:text-primary-orange transition-colors" />
+      </button>
+
+      <div class="absolute top-full right-0 w-56 bg-white border border-slate-200 shadow-xl rounded-xl p-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50 text-left">
+        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-2">Lignes directes</p>
+        
+        <div class="flex flex-col gap-1">
+          <a href="tel:0695311758" class="flex flex-col p-2 rounded-lg hover:bg-slate-50 group/item transition-colors">
+            <span class="text-xs font-bold text-primary-navy group-hover/item:text-primary-orange transition-colors">Tom POULANGES</span>
+            <span class="text-xs text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+              <Icon name="lucide:phone" class="w-3 h-3 text-slate-400" /> 06.95.31.17.58
+            </span>
+          </a>
+          
+          <div class="border-t border-slate-100 my-1"></div>
+          
+          <a href="tel:0634583303" class="flex flex-col p-2 rounded-lg hover:bg-slate-50 group/item transition-colors">
+            <span class="text-xs font-bold text-primary-navy group-hover/item:text-primary-orange transition-colors">Pierre POULANGES</span>
+            <span class="text-xs text-slate-500 font-medium flex items-center gap-1 mt-0.5">
+              <Icon name="lucide:phone" class="w-3 h-3 text-slate-400" /> 06.34.58.33.03
+            </span>
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </header>

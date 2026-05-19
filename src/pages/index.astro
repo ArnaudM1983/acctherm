@@ -1,18 +1,31 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Features from '../components/Features.astro';
-import Prestations from '../components/Prestations.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Prestations from "../components/Prestations.astro";
+import FAQ from "../components/FAQ.astro";
+import Footer from "../components/Footer.astro";
+import Contact from "../components/Contact.astro";
+import Expertise from "../components/Expertise.astro";
+import Certifications from "../components/Certifications.astro";
+import Testimonials from "../components/Testimonials.astro";
+
 ---
 
 <Layout>
-  <Header />
-  <main class="grow flex flex-col p-2 sm:p-4 lg:p-6 gap-2 sm:gap-4 lg:gap-6 bg-[#f8fafc]">
-    <Hero />
-    <Features />
-    <Prestations />
-  </main>
-  <Footer />
+    <Header />
+    <main class="grow flex flex-col gap-4 sm:gap-6 lg:gap-8 bg-[#f8fafc]">
+        <Hero />
+        <div class="flex flex-col gap-12 sm:gap-8 pb-12">
+            <Features />
+            <Certifications />
+            <Prestations />
+            <Expertise />
+            <FAQ />
+			<Testimonials />
+            <Contact />
+        </div>
+    </main>
+    <Footer />
 </Layout>

@@ -1,0 +1,63 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const services = [
+  { 
+    title: "Mesure Intermédiaire (En cours de chantier)", 
+    description: "Test de la porte soufflante dès que le bâtiment est hors d'eau et l'enveloppe fermée. Permet de localiser et corriger les fuites avant les finitions sans surcoût.", 
+    icon: "lucide:git-commit", 
+    url: "/services/infiltrometrie-intermediaire" // Lien vers la page dédiée
+  },
+  { 
+    title: "Mesure Finale & Attestation RE2020/RT2012", 
+    description: "Contrôle réglementaire obligatoire pour valider votre coefficient d'étanchéité à l'air. Donne suite au rapport officiel et à l'attestation de fin de travaux.", 
+    icon: "lucide:file-check", 
+    url: "/services/attestation-fin-de-chantier" 
+  },
+  { 
+    title: "Vérification des Systèmes VMC", 
+    description: "Contrôle obligatoire des débits, pressions et installations de ventilation selon le protocole RE2020 (Promevent) pour garantir la Qualité de l'Air Intérieur (QAI).", 
+    icon: "lucide:gauge", 
+    url: "/services/controle-ventilation-vmc" 
+  },
+  { 
+    title: "Diagnostic de Performance Énergétique (DPE)", 
+    description: "Évaluation officielle de la consommation énergétique et des émissions de gaz à effet de serre de votre logement neuf ou existant.", 
+    icon: "lucide:home", 
+    url: "/services/dpe-audit-energetique" 
+  },
+  { 
+    title: "Tertiaire & Bâtiment Collectif", 
+    description: "Campagnes de mesures de perméabilité à l'air de grands volumes adaptées aux exigences des appels d'offres et bâtiments publics.", 
+    icon: "lucide:building-2", 
+    url: "/services/infiltrometrie-tertiaire-collectif" 
+  },
+  { 
+    title: "Conseils & Formations Artisans", 
+    description: "Accompagnement dès la conception et programmes sur-mesure pour former vos équipes de chantiers aux bonnes pratiques de la RE2020.", 
+    icon: "lucide:graduation-cap", 
+    url: "#contact" // Reste sur l'ancre contact car c'est un service sur-mesure
+  }
+];
+---
+
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+  {services.map((service) => (
+    <a href={service.url} class="group bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:border-primary-orange/40 hover:shadow-md hover:-translate-y-1 transition-all duration-300 flex flex-col gap-4 text-left cursor-pointer">
+      <div class="bg-orange-50 w-12 h-12 rounded-xl flex items-center justify-center text-primary-orange group-hover:bg-primary-orange group-hover:text-white transition-all duration-300 shrink-0">
+        <Icon name={service.icon} class="w-6 h-6" />
+      </div>
+      <div class="flex flex-col gap-2">
+        <h3 class="font-bold text-primary-navy text-base group-hover:text-primary-orange transition-colors duration-300 leading-tight">
+          {service.title}
+        </h3>
+        <p class="text-sm text-slate-500 font-medium leading-relaxed">
+          {service.description}
+        </p>
+      </div>
+      <div class="mt-auto pt-2 flex items-center text-xs font-bold text-primary-orange uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-x-[-4px] group-hover:translate-x-0 transition-all duration-300">
+        {service.url.startsWith('#') ? 'Demander un devis →' : 'Découvrir la prestation →'}
+      </div>
+    </a>
+  ))}
+</div>
