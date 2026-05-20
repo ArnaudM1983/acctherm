@@ -3,46 +3,39 @@ import { Icon } from "astro-icon/components";
 
 const services = [
     {
-        title: "Mesure Intermédiaire (En cours de chantier)",
+        title: "Test d'Infiltrométrie Intermédiaire",
         description:
-            "Test de la porte soufflante dès que le bâtiment est hors d'eau et l'enveloppe fermée. Permet de localiser et corriger les fuites avant les finitions sans surcoût.",
+            "Test de la porte soufflante (blowerdoor) hors d'eau / hors d'air. Permet de localiser les fuites à temps et de corriger l'enveloppe thermique avant la fermeture des cloisons.",
         icon: "lucide:git-commit",
-        url: "/services/infiltrometrie-intermediaire", // Lien vers la page dédiée
+        url: "/prestations/test-infiltrometrie",
     },
     {
-        title: "Mesure Finale & Attestation RE2020/RT2012",
+        title: "Infiltrométrie Finale & Attestation RE2020",
         description:
-            "Contrôle réglementaire obligatoire pour valider votre coefficient d'étanchéité à l'air. Donne suite au rapport officiel et à l'attestation de fin de travaux.",
+            "Mesure de perméabilité à l'air finale obligatoire. Validation du coefficient d'étanchéité requis pour l'obtention de votre attestation de fin de chantier (Cerfa).",
         icon: "lucide:file-check",
         url: "/services/attestation-fin-de-chantier",
     },
     {
-        title: "Vérification des Systèmes VMC",
+        title: "Contrôle Obligatoire Systèmes VMC",
         description:
-            "Contrôle obligatoire des débits, pressions et installations de ventilation selon le protocole RE2020 (Promevent) pour garantir la Qualité de l'Air Intérieur (QAI).",
+            "Vérification visuelle, mesures de débits et pressions aux bouches selon le protocole réglementaire Promevent. Obligatoire RE2020 pour la Qualité de l'Air Intérieur (QAI).",
         icon: "lucide:gauge",
         url: "/services/controle-ventilation-vmc",
     },
     {
-        title: "Diagnostic de Performance Énergétique (DPE)",
+        title: "Pack Fin de Chantier : DPE & Attestations",
         description:
-            "Évaluation officielle de la consommation énergétique et des émissions de gaz à effet de serre de votre logement neuf ou existant.",
+            "Regroupement de vos obligations en une seule intervention : validation RE2020 de votre maison individuelle et réalisation simultanée de votre DPE neuf (hors Audit).",
         icon: "lucide:home",
-        url: "/services/dpe-audit-energetique",
+        url: "/services/dpe-neuf-attestations",
     },
     {
-        title: "Tertiaire & Bâtiment Collectif",
+        title: "Formations & Conseils aux Artisans",
         description:
-            "Campagnes de mesures de perméabilité à l'air de grands volumes adaptées aux exigences des appels d'offres et bâtiments publics.",
-        icon: "lucide:building-2",
-        url: "/services/infiltrometrie-tertiaire-collectif",
-    },
-    {
-        title: "Conseils & Formations Artisans",
-        description:
-            "Accompagnement dès la conception et programmes sur-mesure pour former vos équipes de chantiers aux bonnes pratiques de la RE2020.",
+            "Sensibilisation sur chantier des différents corps d'état (plaquistes, électriciens, menuisiers) pour acquérir les bons réflexes métier liés à l'étanchéité.",
         icon: "lucide:graduation-cap",
-        url: "#contact", // Reste sur l'ancre contact car c'est un service sur-mesure
+        url: "#contact",
     },
 ];
 ---
@@ -67,7 +60,7 @@ const services = [
                 </div>
                 <div class="mt-auto pt-2 flex items-center text-xs font-bold text-primary-orange uppercase tracking-widest">
                     {service.url.startsWith("#")
-                        ? "Demander un devis →"
+                        ? "Demander une formation →"
                         : "Découvrir la prestation →"}
                 </div>
             </a>

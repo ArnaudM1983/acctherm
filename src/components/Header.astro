@@ -17,16 +17,20 @@ import logoCompany from '../assets/acctherm-logo.webp';
     
     {/* Navigation Desktop */}
     <nav class="hidden lg:flex items-center gap-8">
-      <a href="#" class="text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors">Accueil</a>
+      <a href="/" class="text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors">Accueil</a>
       
+      {/* Menu Prestations : Le titre est devenu un vrai lien cliquable */}
       <div class="relative group">
-        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer">
-          Prestations <Icon name="lucide:chevron-down" class="w-4 h-4" />
-        </button>
+        <a 
+          href="/prestations" 
+          class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer"
+        >
+          Prestations <Icon name="lucide:chevron-down" class="w-4 h-4 text-slate-400 group-hover:text-primary-orange" />
+        </a>
         <div class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-          <div class="flex flex-col gap-2">
-            <a href="#service-infiltro" class="text-sm p-3 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Test Infiltrométrie</a>
-            <a href="#service-vmc" class="text-sm p-3 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Audit Ventilation VMC</a>
+          <div class="flex flex-col gap-1">
+            <a href="/prestations/test-infiltrometrie" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Test d'infiltrométrie intermédiaire</a>
+            <a href="/prestations/audit-ventilation-vmc" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Audit Ventilation VMC</a>
           </div>
         </div>
       </div>
@@ -50,10 +54,10 @@ import logoCompany from '../assets/acctherm-logo.webp';
     {/* Badge Qualibat Desktop */}
     <div class="hidden sm:flex items-center gap-1.5 bg-slate-50 px-2.5 py-1.5 rounded-lg border border-slate-100">
       <Icon name="lucide:shield-check" class="w-4 h-4 text-green-600" />
-      <span class="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Qualibat 8711</span>
+      <span class="text-[10px] font-bold text-slate-600 uppercase tracking-tight">Qualibat 8711 & 8741</span>
     </div>
 
-    {/* Menu Équipe (Modifié : ID ajouté pour le JS et classes adaptées pour le clic mobile) */}
+    {/* Menu Équipe */}
     <div id="team-menu-container" class="relative group text-right mr-4 lg:mr-0">
       <button id="team-menu-btn" class="flex items-center gap-1.5 text-right cursor-pointer focus:outline-none py-1 group">
         <div class="hidden xs:block">
@@ -64,7 +68,6 @@ import logoCompany from '../assets/acctherm-logo.webp';
         <Icon name="lucide:chevron-down" class="hidden xs:block w-3.5 h-3.5 text-slate-400 group-hover:text-primary-orange transition-colors" />
       </button>
 
-      {/* Le sous-menu utilise des états "active" injectés par JS en plus du survol CSS classique */}
       <div id="team-dropdown" class="absolute top-full right-0 w-56 bg-white border border-slate-200 shadow-xl rounded-xl p-3 opacity-0 invisible group-hover:lg:opacity-100 group-hover:lg:visible data-[open=true]:opacity-100 data-[open=true]:visible data-[open=true]:translate-y-0 transition-all duration-200 translate-y-2 z-50 text-left">
         <p class="text-[10px] font-bold text-slate-400 uppercase tracking-wider px-2 mb-2">Lignes directes</p>
         
@@ -88,7 +91,7 @@ import logoCompany from '../assets/acctherm-logo.webp';
       </div>
     </div>
 
-    {/* Bouton Hamburger Mobile */}
+    {/* Hamburger Mobile */}
     <button
       id="mobile-menu-btn"
       class="lg:hidden relative w-10 h-10 focus:outline-none flex items-center justify-center z-[60]"
@@ -106,19 +109,24 @@ import logoCompany from '../assets/acctherm-logo.webp';
   id="mobile-menu"
   class="lg:hidden fixed top-0 left-0 w-full h-[100dvh] z-40 bg-white flex flex-col pt-24 px-6 pb-8 gap-2 overflow-y-auto transition-all duration-500 ease-out -translate-y-full opacity-0 invisible pointer-events-none"
 >
-  <a href="#" class="mobile-link w-full text-left text-xl font-bold uppercase text-primary-navy py-3 border-b border-slate-100">
+  <a href="/" class="mobile-link w-full text-left text-xl font-bold uppercase text-primary-navy py-3 border-b border-slate-100">
     Accueil
   </a>
 
+  {/* Accordéon Mobile Prestations */}
   <div class="mobile-accordion w-full border-b border-slate-100">
     <button class="accordion-btn w-full text-left text-xl uppercase font-bold text-primary-navy flex justify-between items-center py-4">
       Prestations
       <Icon name="lucide:chevron-down" class="chevron w-5 h-5 transition-transform duration-300 text-slate-400" />
     </button>
     <div class="accordion-content overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-      <div class="flex flex-col pl-4 border-l-2 border-slate-100 mt-1 mb-4 gap-3">
-        <a href="#service-infiltro" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Test Infiltrométrie</a>
-        <a href="#service-vmc" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Audit Ventilation VMC</a>
+      <div class="flex flex-col pl-4 border-l-2 border-slate-100 mt-1 mb-4 gap-4">
+        {/* Intégration astucieuse du lien global en premier choix mobile */}
+        <a href="/prestations" class="mobile-link text-lg font-bold text-primary-orange flex items-center gap-1.5">
+          Toutes nos prestations <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </a>
+        <a href="/prestations/test-infiltrometrie" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Test d'infiltrométrie intermédiaire</a>
+        <a href="/prestations/audit-ventilation-vmc" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Audit Ventilation VMC</a>
       </div>
     </div>
   </div>
