@@ -8,6 +8,9 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
+  // Configuration du domaine pour la génération du sitemap
+  site: 'https://acctherm.com', 
+  
   adapter: vercel(),
   integrations: [icon(), sitemap()],
   vite: {

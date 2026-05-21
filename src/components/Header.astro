@@ -19,7 +19,7 @@ import logoCompany from '../assets/acctherm-logo.webp';
     <nav class="hidden lg:flex items-center gap-8">
       <a href="/" class="text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors">Accueil</a>
       
-      {/* Menu Prestations : Le titre est devenu un vrai lien cliquable */}
+      {/* Menu Prestations */}
       <div class="relative group">
         <a 
           href="/prestations" 
@@ -39,13 +39,21 @@ import logoCompany from '../assets/acctherm-logo.webp';
         </div>
       </div>
 
+      {/* Menu Expertise Desktop */}
       <div class="relative group">
-        <button class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer">
-          Expertise <Icon name="lucide:chevron-down" class="w-4 h-4" />
-        </button>
+        <a 
+          href="/expertise" 
+          class="flex items-center gap-1 text-sm font-bold text-primary-navy hover:text-primary-orange transition-colors py-2 cursor-pointer"
+        >
+          Expertise <Icon name="lucide:chevron-down" class="w-4 h-4 text-slate-400 group-hover:text-primary-orange" />
+        </a>
         <div class="absolute top-full left-0 w-64 bg-white border border-slate-200 shadow-xl rounded-xl p-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 translate-y-2 group-hover:translate-y-0 z-50">
-          <div class="flex flex-col gap-2">
-            <a href="#" class="text-sm p-3 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Norme RE2020</a>
+          <div class="flex flex-col gap-1">
+            <a href="/expertise" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-bold text-primary-orange transition-colors">Centre de Ressources →</a>
+            <div class="border-t border-slate-100 my-1"></div>
+            <a href="/expertise/guide-re2020" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Norme RE2020</a>
+            <a href="/expertise/recherche-de-fuites" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Recherche de fuites</a>
+            <a href="/expertise/qualite-air-interieur" class="text-sm p-2.5 rounded-lg hover:bg-slate-50 font-semibold text-slate-700 hover:text-primary-orange transition-colors">Qualité de l'air (QAI)</a>
           </div>
         </div>
       </div>
@@ -125,7 +133,6 @@ import logoCompany from '../assets/acctherm-logo.webp';
     </button>
     <div class="accordion-content overflow-hidden transition-all duration-300 max-h-0 opacity-0">
       <div class="flex flex-col pl-4 border-l-2 border-slate-100 mt-1 mb-4 gap-4">
-        {/* Intégration astucieuse du lien global en premier choix mobile */}
         <a href="/prestations" class="mobile-link text-lg font-bold text-primary-orange flex items-center gap-1.5">
           Toutes nos prestations <Icon name="lucide:arrow-right" class="w-4 h-4" />
         </a>
@@ -139,14 +146,20 @@ import logoCompany from '../assets/acctherm-logo.webp';
     </div>
   </div>
 
+  {/* Accordéon Mobile Expertise */}
   <div class="mobile-accordion w-full border-b border-slate-100">
     <button class="accordion-btn w-full text-left text-xl uppercase font-bold text-primary-navy flex justify-between items-center py-4">
       Expertise
       <Icon name="lucide:chevron-down" class="chevron w-5 h-5 transition-transform duration-300 text-slate-400" />
     </button>
     <div class="accordion-content overflow-hidden transition-all duration-300 max-h-0 opacity-0">
-      <div class="flex flex-col pl-4 border-l-2 border-slate-100 mt-1 mb-4 gap-3">
-        <a href="#" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Norme RE2020</a>
+      <div class="flex flex-col pl-4 border-l-2 border-slate-100 mt-1 mb-4 gap-4">
+        <a href="/expertise" class="mobile-link text-lg font-bold text-primary-orange flex items-center gap-1.5">
+          Toutes nos expertises <Icon name="lucide:arrow-right" class="w-4 h-4" />
+        </a>
+        <a href="/expertise/guide-re2020" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Norme RE2020</a>
+        <a href="/expertise/recherche-de-fuites" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Recherche de fuites</a>
+        <a href="/expertise/qualite-air-interieur" class="mobile-link text-lg font-medium text-slate-600 hover:text-primary-orange">Qualité de l'air (QAI)</a>
       </div>
     </div>
   </div>
@@ -216,12 +229,11 @@ import logoCompany from '../assets/acctherm-logo.webp';
 
     if (teamBtn && teamDropdown && teamContainer) {
       teamBtn.addEventListener('click', (e) => {
-        e.stopPropagation(); // Évite la fermeture immédiate sur le document
+        e.stopPropagation();
         const isOpen = teamDropdown.getAttribute('data-open') === 'true';
         teamDropdown.setAttribute('data-open', isOpen ? 'false' : 'true');
       });
 
-      // Ferme la fenêtre si on clique n'importe où ailleurs sur la page
       document.addEventListener('click', (e) => {
         if (!teamContainer.contains(e.target as Node)) {
           teamDropdown.setAttribute('data-open', 'false');
