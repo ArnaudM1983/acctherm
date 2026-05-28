@@ -1,0 +1,170 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/Contact.astro";
+import { Icon } from "astro-icon/components";
+
+// Données sémantiques de la page pour le SEO
+const pageTitle = "L'Équipe d'Experts Thermiques ACCTHERM | Lyon & Rhône-Alpes";
+const pageDescription = "Rencontrez Tom et Pierre Poulanges, les experts certifiés d'ACCTHERM. Spécialistes Qualibat 8711 & 8741 pour vos tests d'infiltrométrie et contrôles VMC RE2020.";
+
+// Schéma JSON-LD pour booster le SEO local
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "mainEntity": {
+    "@type": "LocalBusiness",
+    "name": "ACCTHERM",
+    "image": "https://acctherm.com/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Lyon",
+      "addressRegion": "Auvergne-Rhône-Alpes",
+      "addressCountry": "FR"
+    },
+    "description": "Société de contrôle énergétique agréée Qualibat 8711 et 8741 spécialisée en infiltrométrie et protocole Promevent.",
+    "employee": [
+      {
+        "@type": "Person",
+        "name": "Tom POULANGES",
+        "jobTitle": "Opérateur Certifié Infiltrométrie"
+      },
+      {
+        "@type": "Person",
+        "name": "Pierre POULANGES",
+        "jobTitle": "Opérateur Certifié Ventilation VMC"
+      }
+    ]
+  }
+};
+
+const team = [
+  {
+    name: "Tom POULANGES",
+    role: "Opérateur Certifié Infiltrométrie",
+    badge: "Qualibat 8711",
+    desc: "Spécialiste de la traque de fuites d'air et du contrôle des enveloppes du bâtiment. Tom intervient sur vos chantiers à Lyon et en Rhône-Alpes pour réaliser les mesures d'infiltrométrie (tests intermédiaires et finaux) avec rapports sous 24h.",
+    initials: "TP",
+    icon: "lucide:shield-check",
+    phone: "06.95.31.17.58",
+    phoneRaw: "0695311758"
+  },
+  {
+    name: "Pierre POULANGES",
+    role: "Opérateur Certifié Ventilation VMC",
+    badge: "Qualibat 8741 / Promevent",
+    desc: "Expert des systèmes aérauliques et de la Qualité de l'Air Intérieur (QAI). Pierre assure les contrôles obligatoires RE2020 des réseaux de ventilation (débits et pression) selon le protocole réglementaire Promevent.",
+    initials: "PP",
+    icon: "lucide:wind",
+    phone: "06.34.58.33.03",
+    phoneRaw: "0634583303"
+  }
+];
+---
+
+<Layout title={pageTitle} description={pageDescription} schema={aboutSchema}>
+  <Header />
+  
+  <main class="grow bg-[#f8fafc]">
+    
+    <!-- En-tête de la page -->
+    <section class="w-full bg-white border-b border-slate-100 relative overflow-hidden pt-12 pb-16">
+      <div class="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] bg-size-[16px_16px] opacity-40 pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-4 text-center">
+        <span class="inline-block bg-orange-100 text-primary-orange text-xs font-bold uppercase tracking-[0.2em] px-3 py-1.5 rounded-lg mb-4">
+          Qui sommes-nous ?
+        </span>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-black font-display text-primary-navy leading-tight mb-6 max-w-3xl mx-auto">
+          L'Équipe Technique <span class="text-primary-orange">ACCTHERM</span>
+        </h1>
+        <p class="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed font-medium">
+          Une expertise familiale reconnue pour valider la conformité énergétique et environnementale de vos constructions neuves à Lyon et dans toute la région Auvergne-Rhône-Alpes.
+        </p>
+      </div>
+    </section>
+
+    <!-- Section Présentation des membres (2 colonnes) -->
+    <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {team.map((member) => (
+          <div class="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm flex flex-col items-center text-center relative overflow-hidden group hover:border-primary-orange/40 hover:shadow-md hover:scale-[1.02] transition-all duration-300">
+            {/* Badge de certification */}
+            <span class="absolute top-4 right-4 bg-orange-50 text-primary-orange text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-md border border-orange-100">
+              {member.badge}
+            </span>
+            
+            {/* Avatar Initials Monogram Frame */}
+            <div class="w-20 h-20 bg-[#1e293b] border-2 border-[#f97316] text-white rounded-full flex flex-col items-center justify-center mb-6 relative shadow-inner shrink-0 group-hover:scale-105 transition-all duration-300">
+              <span class="text-xl font-black font-display tracking-wider">{member.initials}</span>
+              <Icon name={member.icon} class="w-3.5 h-3.5 absolute bottom-1 right-1 text-[#f97316]" />
+            </div>
+            
+            {/* Nom & Rôle */}
+            <h3 class="text-xl font-bold text-primary-navy mb-1">{member.name}</h3>
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-4">{member.role}</p>
+            
+            {/* Description */}
+            <p class="text-sm text-slate-500 leading-relaxed font-medium mb-8 grow">
+              {member.desc}
+            </p>
+            
+            {/* Ligne Directe & Call CTA (Sticky bottom action) */}
+            <div class="w-full pt-6 border-t border-slate-100 flex flex-col gap-3">
+              <span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Ligne directe</span>
+              <a 
+                href={`tel:${member.phoneRaw}`} 
+                class="flex items-center justify-center gap-2 bg-[#1e293b] hover:bg-[#f97316] text-white font-bold py-3.5 px-6 rounded-xl text-sm transition-all duration-300 w-full shadow-sm"
+              >
+                <Icon name="lucide:phone" class="w-4 h-4" />
+                {member.phone}
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Mid-Page Value Banner -->
+    <section class="w-full bg-[#1e293b] text-white py-12 md:py-16">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        {/* Item 1 */}
+        <div class="flex items-start gap-4">
+          <div class="bg-[#f97316]/10 text-[#f97316] w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-[#f97316]/20">
+            <Icon name="lucide:clock" class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Réactivité sous 24h</h3>
+            <p class="text-sm text-slate-300 font-medium leading-relaxed">
+              Vos rapports réglementaires d'infiltrométrie et Promevent livrés en un temps record pour obtenir vos attestations sans bloquer vos chantiers.
+            </p>
+          </div>
+        </div>
+
+        {/* Item 2 */}
+        <div class="flex items-start gap-4">
+          <div class="bg-[#f97316]/10 text-[#f97316] w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border border-[#f97316]/20">
+            <Icon name="lucide:map-pin" class="w-6 h-6" />
+          </div>
+          <div>
+            <h3 class="font-bold text-lg text-white mb-2">Ancrage Auvergne-Rhône-Alpes</h3>
+            <p class="text-sm text-slate-300 font-medium leading-relaxed">
+              Une structure de proximité basée à Lyon pour une intervention réactive sur les départements 69, 01, 38, 42, 73, 74.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Formulaire de contact en bas -->
+    <div class="py-12 bg-[#f8fafc] border-t border-slate-100">
+      <ContactForm />
+    </div>
+
+  </main>
+
+  <Footer />
+</Layout>
